@@ -19,6 +19,45 @@ $ocLazyLoad.load('gridModule').then(function() {
 $('link[href="/url/to/your/file.css"]').remove();
 ```
 
-> ### 你有一个我能够使用plnkr吗?我能够在上面提问问题吗
+> ### 你有一个我能够使用的plnkr并且我能够在上面提问问题吗
 
 #### 当让有,你可以使用这个[http://plnkr.co/edit/n4DG0bbC14Mm1uccBptd?p=preview](http://plnkr.co/edit/n4DG0bbC14Mm1uccBptd?p=preview)
+
+> ### 我如何使用一个我刚刚延时加载的服务
+
+#### 你应该使用`$injector`
+#### *JavaScript*
+```javascript
+var app = angular.module("myApp", ["oc.lazyLoad"]);
+
+app.controller('MyCtrl', function($scope, $ocLazyLoad, $injector) {
+    $ocLazyLoad.load('ngDialog.js').then(function() {
+        var ngDialog = $injector.get('ngDialog');
+        ngDialog.open({
+            template: 'dialogTemplate'
+        });
+    });
+});
+```
+
+> ### 我能够延时加载所有的`AngularJS`模块吗
+
+#### 当然不可以,虽然你可以延时加载几乎所有的模块,但是一些`原生`的模块是不能够延时加载的.因为他们被高度的集成到`AngularJS`中.下面是一些不能够延时加载的不完整的列表,其中包括:`ngAnimate`, `ngRoute`, `ngSanitizer`, `ngTouch`.(如果你在延时加载别的原生模块中遇到了困难,请告诉我们,以便修改上面那个列表)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
