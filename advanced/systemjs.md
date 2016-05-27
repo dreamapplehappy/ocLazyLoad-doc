@@ -20,7 +20,7 @@ System.import('js/core/states/app').then(function(m) {
 export var coreStates = angular.module( 'core.states');
 ```
 ## 详细示例
-#### 我们需要按需加载的那些模块看起来也许是下面这个样子.
+#### 我们需要延时加载的那些模块看起来也许是下面这个样子.
 #### *JavaScript*
 ```javascript
 var secondModule = angular.module('secondModule', []);
