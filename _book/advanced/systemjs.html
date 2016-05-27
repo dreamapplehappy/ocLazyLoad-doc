@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="3.5" data-basepath=".." data-revision="Wed May 11 2016 22:19:16 GMT+0800 (CST)">
+    <div class="book" data-level="3.5" data-basepath=".." data-revision="Thu May 26 2016 17:28:34 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -279,7 +279,7 @@
                         
                             <b>4.2.</b>
                         
-                        额外帮助
+                        其它帮助
                     </a>
             
             
@@ -412,6 +412,81 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="systemjs">SystemJS</h1>
+<h4 id="-%E8%BF%99%E7%AF%87%E6%96%87%E6%A1%A3%E8%BF%98%E5%9C%A8%E8%BF%9B%E8%A1%8C%E4%B8%AD-%E5%BE%88%E5%BF%AB%E5%B0%86%E4%BC%9A%E8%A2%AB%E5%AE%8C%E5%96%84"><em>&#x8FD9;&#x7BC7;&#x6587;&#x6863;&#x8FD8;&#x5728;&#x8FDB;&#x884C;&#x4E2D;,&#x5F88;&#x5FEB;&#x5C06;&#x4F1A;&#x88AB;&#x5B8C;&#x5584;</em></h4>
+<h2 id="%E7%AE%80%E7%9F%AD%E7%A4%BA%E4%BE%8B">&#x7B80;&#x77ED;&#x793A;&#x4F8B;</h2>
+<h4 id="%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8-systemjs-%E5%92%8C-oclazyload-%E7%9A%84%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E5%BC%8F%E5%B0%B1%E6%98%AF%E4%BD%BF%E7%94%A8-system-import-api">&#x7ED3;&#x5408;&#x4F7F;&#x7528;<code>SystemJS</code>&#x548C;<code>ocLazyLoad</code>&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x4F7F;&#x7528;<code>System.import</code>API:</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {coreStates} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;js/core/states/app&apos;</span>
+
+// Optionally, return to wherever this promise chain might be useful
+System.<span class="hljs-keyword">import</span>(<span class="hljs-string">&apos;js/core/states/app&apos;</span>).then(function(m) {
+  return $ocLazyLoad.load(m.coreStates);
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> Startup.awake();
+})
+</code></pre>
+<h4 id="-corestates-%E7%9C%8B%E8%B5%B7%E6%9D%A5%E4%B9%9F%E8%AE%B8%E6%98%AF%E4%B8%8B%E9%9D%A2%E8%BF%99%E6%A0%B7%E7%9A%84"><code>coreStates</code>&#x770B;&#x8D77;&#x6765;&#x4E5F;&#x8BB8;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;:</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> coreStates = angular.module( <span class="hljs-string">&apos;core.states&apos;</span>);
+</code></pre>
+<h2 id="%E8%AF%A6%E7%BB%86%E7%A4%BA%E4%BE%8B">&#x8BE6;&#x7EC6;&#x793A;&#x4F8B;</h2>
+<h4 id="%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E6%A8%A1%E5%9D%97%E7%9C%8B%E8%B5%B7%E6%9D%A5%E4%B9%9F%E8%AE%B8%E6%98%AF%E4%B8%8B%E9%9D%A2%E8%BF%99%E4%B8%AA%E6%A0%B7%E5%AD%90">&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#x7684;&#x90A3;&#x4E9B;&#x6A21;&#x5757;&#x770B;&#x8D77;&#x6765;&#x4E5F;&#x8BB8;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;.</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> secondModule = angular.module(<span class="hljs-string">&apos;secondModule&apos;</span>, []);
+
+secondModule.run(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;secondModule::run&apos;</span>);
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> secondModule;
+</code></pre>
+<h4 id="%E5%9C%A8%E4%B8%8A%E9%9D%A2%E7%9A%84%E4%BE%8B%E5%AD%90%E4%B8%AD%E6%88%91%E4%BB%AC%E6%8A%8A%E9%9C%80%E8%A6%81%E5%AF%BC%E5%87%BA%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BD%9C%E4%B8%BA%E4%BA%86%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%87%BA-%E8%BF%99%E6%A0%B7%E7%9A%84%E8%AF%9D%E4%B8%80%E6%97%A6%E6%88%91%E4%BB%AC%E5%8A%A0%E8%BD%BD%E4%BA%86%E8%BF%99%E4%B8%AA%E6%A8%A1%E5%9D%97-%E8%BF%99%E4%B8%AA%E6%A8%A1%E5%9D%97%E5%B0%B1%E4%BC%9A%E9%A9%AC%E4%B8%8A%E8%B5%B7%E4%BD%9C%E7%94%A8">&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x6211;&#x4EEC;&#x628A;&#x9700;&#x8981;&#x5BFC;&#x51FA;&#x7684;&#x6A21;&#x5757;&#x4F5C;&#x4E3A;&#x4E86;&#x9ED8;&#x8BA4;&#x6A21;&#x5757;&#x5BFC;&#x51FA;;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x4E00;&#x65E6;&#x6211;&#x4EEC;&#x52A0;&#x8F7D;&#x4E86;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;,&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x5C31;&#x4F1A;&#x9A6C;&#x4E0A;&#x8D77;&#x4F5C;&#x7528;.</h4>
+<h4 id="-thirdmodule-js"><em>thirdModule.js</em></h4>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> thirdModule = angular.module(<span class="hljs-string">&apos;thirdModule&apos;</span>, []);
+
+thirdModule.run(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;thirdModule::run&apos;</span>);
+});
+
+<span class="hljs-keyword">export</span> { thirdModule };
+</code></pre>
+<h4 id="%E5%9C%A8%E4%B8%8A%E9%9D%A2%E6%88%91%E4%BB%AC%E5%AE%9A%E4%B9%89%E4%BA%86%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9D%97-%E4%BD%86%E6%98%AF%E6%B2%A1%E6%9C%89%E4%BD%9C%E4%B8%BA%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%87%BA-%E5%BD%93%E7%84%B6%E4%B8%80%E6%97%A6%E6%88%91%E4%BB%AC%E5%8A%A0%E8%BD%BD%E4%BA%86%E8%BF%99%E4%B8%AA%E6%A8%A1%E5%9D%97-%E5%AE%83%E4%B9%9F%E4%BC%9A%E9%A9%AC%E4%B8%8A%E8%B5%B7%E4%BD%9C%E7%94%A8">&#x5728;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x6A21;&#x5757;,&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4;&#x6A21;&#x5757;&#x5BFC;&#x51FA;;&#x5F53;&#x7136;&#x4E00;&#x65E6;&#x6211;&#x4EEC;&#x52A0;&#x8F7D;&#x4E86;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;,&#x5B83;&#x4E5F;&#x4F1A;&#x9A6C;&#x4E0A;&#x8D77;&#x4F5C;&#x7528;.</h4>
+<h4 id="-loadermodule-js"><em>loaderModule.js</em></h4>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lazySystem</span> (<span class="hljs-params">$ocLazyLoad</span>) </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span> (<span class="hljs-params">src, key</span>) </span>{
+    <span class="hljs-keyword">return</span> System.import(src).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">loadedFile</span>) </span>{
+      <span class="hljs-keyword">return</span> $ocLazyLoad.load(loadedFile[key || <span class="hljs-string">&apos;default&apos;</span>]);
+    });
+  }
+
+  <span class="hljs-keyword">this</span>.load = load;
+}
+
+<span class="hljs-keyword">var</span> loaderModule = angular
+  .module(<span class="hljs-string">&apos;loaderModule&apos;</span>, [<span class="hljs-string">&apos;oc.lazyLoad&apos;</span>])
+  .service(<span class="hljs-string">&apos;lazySystem&apos;</span>, lazySystem);
+
+<span class="hljs-keyword">export</span> { loaderModule };
+</code></pre>
+<h4 id="-lazysystem-%E6%9C%8D%E5%8A%A1%E6%98%AF%E4%B8%80%E4%B8%AA%E5%B0%81%E8%A3%85%E7%9A%84%E6%A8%A1%E5%9D%97-%E5%AE%83%E6%89%98%E7%AE%A1%E4%BA%86%E6%88%91%E4%BB%AC%E7%9A%84-load-%E6%96%B9%E6%B3%95-%E8%BF%90%E8%A1%8C-system-import-%E5%B9%B6%E4%B8%94%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0-%E4%BD%A0%E9%9C%80%E8%A6%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84-%E7%84%B6%E5%90%8E%E6%8A%8A%E8%BF%99%E4%B8%AA%E7%BB%93%E6%9E%9C%E8%BF%94%E8%BF%98%E7%BB%99-oclazyload-load"><code>lazySystem</code>&#x670D;&#x52A1;&#x662F;&#x4E00;&#x4E2A;&#x5C01;&#x88C5;&#x7684;&#x6A21;&#x5757;,&#x5B83;&#x6258;&#x7BA1;&#x4E86;&#x6211;&#x4EEC;&#x7684;<code>.load</code>&#x65B9;&#x6CD5;.&#x8FD0;&#x884C;<code>System.import</code>&#x5E76;&#x4E14;&#x4F20;&#x5165;&#x53C2;&#x6570;(&#x4F60;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;),&#x7136;&#x540E;&#x628A;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x8FD4;&#x8FD8;&#x7ED9;<code>$ocLazyLoad.load()</code>.</h4>
+<h4 id="%E9%80%9A%E8%BF%87%E7%BB%99-load-%E6%96%B9%E6%B3%95%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E9%94%AE%E5%80%BC%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E4%BB%8E%E5%B7%B2%E7%BB%8F%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AA%E6%8C%87%E5%AE%9A%E7%9A%84%E6%A8%A1%E5%9D%97-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E6%8C%87%E5%AE%9A%E9%94%AE%E5%80%BC%E7%9A%84%E8%AF%9D-%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%88%B0%E9%BB%98%E8%AE%A4%E8%A2%AB%E5%AF%BC%E5%87%BA%E7%9A%84%E6%A8%A1%E5%9D%97">&#x901A;&#x8FC7;&#x7ED9;<code>.load</code>&#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE;&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x6A21;&#x5757;,&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x952E;&#x503C;&#x7684;&#x8BDD;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x9ED8;&#x8BA4;&#x88AB;&#x5BFC;&#x51FA;&#x7684;&#x6A21;&#x5757;.</h4>
+<h4 id="-oclazyload-%E5%B0%86%E4%BC%9A%E6%8A%8A%E8%BF%99%E4%B8%AA%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E6%A8%A1%E5%9D%97%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA-promise-%E8%BF%94%E5%9B%9E"><code>$ocLazyLoad</code>&#x5C06;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;<code>promise</code>&#x8FD4;&#x56DE;.</h4>
+<h4 id="-example-js"><em>example.js</em></h4>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { loaderModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./loaderModule&apos;</span>; 
+
+<span class="hljs-keyword">var</span> app = angular.module(<span class="hljs-string">&apos;app&apos;</span>, [ loaderModule.name ]);
+
+app.run(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">lazySystem</span>) </span>{
+  lazySystem.load(<span class="hljs-string">&apos;./secondModule&apos;</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">loadedModule</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(loadedModule);
+  });
+
+  lazySystem.load(<span class="hljs-string">&apos;./thirdModule&apos;</span>, <span class="hljs-string">&apos;thirdModule&apos;</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">loadedModule</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(loadedModule);
+  });
+});
+</code></pre>
+<h4 id="%E5%9C%A8%E6%88%91%E4%BB%AC%E7%9A%84%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6-%E9%82%A3%E4%B8%AA%E5%8C%85%E5%90%AB%E6%88%91%E4%BB%AC%E5%BA%94%E7%94%A8%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9A%84%E6%96%87%E4%BB%B6-%E5%AF%BC%E5%87%BA%E4%B8%8A%E9%9D%A2%E5%93%AA%E4%B8%AA-loadermodule-%E5%9C%A8-run-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD-%E5%8A%A0%E8%BD%BD%E6%88%91%E4%BB%AC%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%A8%A1%E5%9D%97%E5%92%8C%E7%AC%AC%E4%B8%89%E4%B8%AA%E6%A8%A1%E5%9D%97-%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E5%AE%83%E4%BB%AC%E5%90%84%E8%87%AA%E7%9A%84%E6%89%93%E5%8D%B0%E7%9A%84%E7%BB%93%E6%9E%9C">&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;,(&#x90A3;&#x4E2A;&#x5305;&#x542B;&#x6211;&#x4EEC;&#x5E94;&#x7528;&#x6838;&#x5FC3;&#x57FA;&#x7840;&#x7684;&#x6587;&#x4EF6;),&#x5BFC;&#x51FA;&#x4E0A;&#x9762;&#x54EA;&#x4E2A;<code>loaderModule</code>,&#x5728;<code>run</code>&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;,&#x52A0;&#x8F7D;&#x6211;&#x4EEC;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x6A21;&#x5757;&#x548C;&#x7B2C;&#x4E09;&#x4E2A;&#x6A21;&#x5757;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x4EEC;&#x5404;&#x81EA;&#x7684;&#x6253;&#x5370;&#x7684;&#x7ED3;&#x679C;.</h4>
 
                     
                     </section>

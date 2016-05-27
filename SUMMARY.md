@@ -12,5 +12,5 @@
   - [SystemJS](advanced/systemjs.md)
 * [其他]
   - [FAQ](other/faq.md)
-  - [额外帮助](other/external-help.md)
+  - [其它帮助](other/external-help.md)
   - [我想贡献](other/contribute.md)

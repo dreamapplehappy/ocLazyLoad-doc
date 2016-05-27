@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="4.1" data-basepath=".." data-revision="Wed May 11 2016 22:19:16 GMT+0800 (CST)">
+    <div class="book" data-level="4.1" data-basepath=".." data-revision="Thu May 26 2016 17:28:34 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -279,7 +279,7 @@
                         
                             <b>4.2.</b>
                         
-                        额外帮助
+                        其它帮助
                     </a>
             
             
@@ -412,6 +412,27 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="faq">FAQ</h1>
+<blockquote>
+<h3 id="%E6%88%91%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD%E4%BA%86%E4%B8%80%E4%B8%AA%E6%8C%87%E4%BB%A4-%E4%BD%86%E6%98%AF%E5%9C%A8%E6%88%91%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%8A%E6%B2%A1%E6%9C%89%E7%9C%8B%E5%88%B0%E5%8F%98%E5%8C%96">&#x6211;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#x4E86;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;,&#x4F46;&#x662F;&#x5728;&#x6211;&#x7684;&#x9875;&#x9762;&#x4E0A;&#x6CA1;&#x6709;&#x770B;&#x5230;&#x53D8;&#x5316;</h3>
+</blockquote>
+<h4 id="%E5%A6%82%E6%9E%9C%E8%BF%99%E4%B8%AA%E6%8C%87%E4%BB%A4%E5%9C%A8%E4%BD%A0%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E5%AE%83%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B9%8B%E5%89%8D%E5%B0%B1%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E4%BD%A0%E7%9A%84-dom-%E4%B8%AD%E7%9A%84%E8%AF%9D-%E4%BD%A0%E9%9C%80%E8%A6%81%E5%91%8A%E8%AF%89-angular-%E5%AE%83%E5%BA%94%E8%AF%A5%E8%A7%A3%E6%9E%90-dom-%E5%B9%B6%E4%B8%94%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E8%BF%99%E4%B8%AA%E6%96%B0%E7%9A%84%E6%8C%87%E4%BB%A4-%E4%B8%BA%E4%BA%86%E4%BD%BF-angular-%E8%83%BD%E5%A4%9F%E9%82%A3%E6%A0%B7%E5%81%9A%E5%88%B0-%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8-compile-%E6%9C%8D%E5%8A%A1">&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x5728;&#x4F60;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x4E4B;&#x524D;&#x5C31;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4F60;&#x7684;<code>DOM</code>&#x4E2D;&#x7684;&#x8BDD;,&#x4F60;&#x9700;&#x8981;&#x544A;&#x8BC9;<code>Angular</code>,&#x5B83;&#x5E94;&#x8BE5;&#x89E3;&#x6790;<code>DOM</code>&#x5E76;&#x4E14;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x8FD9;&#x4E2A;&#x65B0;&#x7684;&#x6307;&#x4EE4;.&#x4E3A;&#x4E86;&#x4F7F;<code>Angular</code>&#x80FD;&#x591F;&#x90A3;&#x6837;&#x505A;&#x5230;,&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>$compile</code>&#x670D;&#x52A1;.</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript">$ocLazyLoad.load(<span class="hljs-string">&apos;gridModule&apos;</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  $compile(angular.element(<span class="hljs-string">&apos;body&apos;</span>))($scope);
+});
+</code></pre>
+<h4 id="%E4%BD%A0%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-oclazyload-directive-https-oclazyload-readme-io-v1-0-docs-oclazyload-directive-%E8%BF%99%E4%B8%AA%E6%8C%87%E4%BB%A4%E5%B0%B1%E6%98%AF%E4%B8%BA%E4%BA%86%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E8%80%8C%E5%86%99%E7%9A%84">&#x4F60;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;<a href="https://oclazyload.readme.io/v1.0/docs/oclazyload-directive" target="_blank"><code>ocLazyLoad directive</code></a>,&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x800C;&#x5199;&#x7684;.</h4>
+<blockquote>
+<h3 id="%E5%AE%83%E8%83%BD%E5%A4%9F%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90%E5%90%97">&#x5B83;&#x80FD;&#x591F;&#x5378;&#x8F7D;&#x8D44;&#x6E90;&#x5417;</h3>
+</blockquote>
+<h4 id="%E5%AE%83%E4%B8%8D%E8%83%BD%E5%A4%9F%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90-%E4%BD%86%E6%98%AF%E4%BD%A0%E5%8F%AF%E4%BB%A5%E7%A7%BB%E9%99%A4-css-%E9%80%9A%E8%BF%87%E7%A7%BB%E9%99%A4%E4%BD%A0%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84-link-%E6%A0%87%E7%AD%BE-%E5%A4%A7%E6%A6%82%E6%98%AF%E4%B8%8B%E9%9D%A2%E8%BF%99%E4%B8%AA%E6%A0%B7%E5%AD%90">&#x5B83;&#x4E0D;&#x80FD;&#x591F;&#x5378;&#x8F7D;&#x8D44;&#x6E90;,&#x4F46;&#x662F;&#x4F60;&#x53EF;&#x4EE5;&#x79FB;&#x9664;<code>css</code>&#x901A;&#x8FC7;&#x79FB;&#x9664;&#x4F60;&#x6587;&#x4EF6;&#x4E2D;&#x7684;<code>link</code>&#x6807;&#x7B7E;,&#x5927;&#x6982;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;:</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript">$(<span class="hljs-string">&apos;link[href=&quot;/url/to/your/file.css&quot;]&apos;</span>).remove();
+</code></pre>
+<blockquote>
+<h3 id="%E4%BD%A0%E6%9C%89%E4%B8%80%E4%B8%AA%E6%88%91%E8%83%BD%E5%A4%9F%E4%BD%BF%E7%94%A8plnkr%E5%90%97-%E6%88%91%E8%83%BD%E5%A4%9F%E5%9C%A8%E4%B8%8A%E9%9D%A2%E6%8F%90%E9%97%AE%E9%97%AE%E9%A2%98%E5%90%97">&#x4F60;&#x6709;&#x4E00;&#x4E2A;&#x6211;&#x80FD;&#x591F;&#x4F7F;&#x7528;plnkr&#x5417;?&#x6211;&#x80FD;&#x591F;&#x5728;&#x4E0A;&#x9762;&#x63D0;&#x95EE;&#x95EE;&#x9898;&#x5417;</h3>
+</blockquote>
+<h4 id="%E5%BD%93%E8%AE%A9%E6%9C%89-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA-http-plnkr-co-edit-n4dg0bbc14mm1uccbptd-p-preview-http-plnkr-co-edit-n4dg0bbc14mm1uccbptd-p-preview">&#x5F53;&#x8BA9;&#x6709;,&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;<a href="http://plnkr.co/edit/n4DG0bbC14Mm1uccBptd?p=preview" target="_blank">http://plnkr.co/edit/n4DG0bbC14Mm1uccBptd?p=preview</a></h4>
 
                     
                     </section>
@@ -425,7 +446,7 @@
         <a href="../advanced/systemjs.html" class="navigation navigation-prev " aria-label="Previous page: SystemJS"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../other/external-help.html" class="navigation navigation-next " aria-label="Next page: 额外帮助"><i class="fa fa-angle-right"></i></a>
+        <a href="../other/external-help.html" class="navigation navigation-next " aria-label="Next page: 其它帮助"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

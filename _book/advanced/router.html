@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="3.1" data-basepath=".." data-revision="Wed May 11 2016 22:19:16 GMT+0800 (CST)">
+    <div class="book" data-level="3.1" data-basepath=".." data-revision="Thu May 26 2016 17:28:34 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -279,7 +279,7 @@
                         
                             <b>4.2.</b>
                         
-                        额外帮助
+                        其它帮助
                     </a>
             
             
@@ -412,6 +412,73 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="%E9%85%8D%E5%90%88%E8%B7%AF%E7%94%B1">&#x914D;&#x5408;&#x8DEF;&#x7531;</h1>
+<h4 id="-oclazyload-%E8%83%BD%E5%A4%9F%E5%92%8C%E8%B7%AF%E7%94%B1%E5%BE%88%E5%A5%BD%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8-%E5%B0%A4%E5%85%B6%E6%98%AF-ui-router-%E5%9B%A0%E4%B8%BA%E5%AE%83%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA-promise"><code>$ocLazyLoad</code>&#x80FD;&#x591F;&#x548C;&#x8DEF;&#x7531;&#x5F88;&#x597D;&#x7684;&#x7ED3;&#x5408;&#x4F7F;&#x7528;,&#x5C24;&#x5176;&#x662F;<code>ui-router</code>.&#x56E0;&#x4E3A;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>promise</code>,</h4>
+<h4 id="%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8angular%E7%9A%84-resolve-%E5%B1%9E%E6%80%A7%E7%A1%AE%E4%BF%9D%E6%88%91%E4%BB%AC%E7%9A%84%E7%BB%84%E4%BB%B6%E6%98%AF%E5%9C%A8%E6%88%91%E4%BB%AC%E7%9A%84%E8%A7%86%E5%9B%BE%E8%A2%AB-resolved-%E4%B9%8B%E5%89%8D%E5%8A%A0%E8%BD%BD%E7%9A%84">&#x6211;&#x4EEC;&#x4F7F;&#x7528;angular&#x7684;<code>resolve</code>&#x5C5E;&#x6027;&#x786E;&#x4FDD;&#x6211;&#x4EEC;&#x7684;&#x7EC4;&#x4EF6;&#x662F;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x89C6;&#x56FE;&#x88AB;<code>resolved</code>&#x4E4B;&#x524D;&#x52A0;&#x8F7D;&#x7684;.</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript">$stateProvider.state(<span class="hljs-string">&apos;index&apos;</span>, {
+  url: <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-comment">// root route</span>
+  views: {
+    <span class="hljs-string">&quot;lazyLoadView&quot;</span>: {
+      controller: <span class="hljs-string">&apos;AppCtrl&apos;</span>, <span class="hljs-comment">// This view will use AppCtrl loaded below in the resolve</span>
+      templateUrl: <span class="hljs-string">&apos;partials/main.html&apos;</span>
+    }
+  },
+  resolve: { <span class="hljs-comment">// Any property in resolve should return a promise and is executed before the view is loaded</span>
+    loadMyCtrl: [<span class="hljs-string">&apos;$ocLazyLoad&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$ocLazyLoad</span>) </span>{
+      <span class="hljs-comment">// you can lazy load files for an existing module</span>
+             <span class="hljs-keyword">return</span> $ocLazyLoad.load(<span class="hljs-string">&apos;js/AppCtrl.js&apos;</span>);
+    }]
+  }
+});
+</code></pre>
+<h4 id="%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AF%E5%9C%A8%E5%B5%8C%E5%A5%97%E7%9A%84%E8%B7%AF%E7%94%B1%E4%B8%AD%E4%BD%BF%E7%94%A8-%E9%82%A3%E4%B9%88%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E6%98%AF-%E4%BD%A0%E9%9C%80%E8%A6%81%E5%9C%A8%E7%88%B6%E8%B7%AF%E7%94%B1%E4%B8%AD%E5%8C%85%E5%90%AB-resolve-%E5%B1%9E%E6%80%A7-%E5%B9%B6%E4%B8%94%E6%8C%89%E7%85%A7%E9%A1%BA%E5%BA%8F%E5%8E%BB%E5%8A%A0%E8%BD%BD%E4%BD%A0%E7%9A%84%E5%AD%90%E8%B7%AF%E7%94%B1%E9%9C%80%E8%A6%81%E7%9A%84%E7%BB%84%E4%BB%B6">&#x5982;&#x679C;&#x4F60;&#x662F;&#x5728;&#x5D4C;&#x5957;&#x7684;&#x8DEF;&#x7531;&#x4E2D;&#x4F7F;&#x7528;,&#x90A3;&#x4E48;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;:&#x4F60;&#x9700;&#x8981;&#x5728;&#x7236;&#x8DEF;&#x7531;&#x4E2D;&#x5305;&#x542B;<code>resolve</code>&#x5C5E;&#x6027;,&#x5E76;&#x4E14;&#x6309;&#x7167;&#x987A;&#x5E8F;&#x53BB;&#x52A0;&#x8F7D;&#x4F60;&#x7684;&#x5B50;&#x8DEF;&#x7531;&#x9700;&#x8981;&#x7684;&#x7EC4;&#x4EF6;,</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript">$stateProvider.state(<span class="hljs-string">&apos;parent&apos;</span>, {
+  url: <span class="hljs-string">&quot;/&quot;</span>,
+  resolve: {
+    loadMyService: [<span class="hljs-string">&apos;$ocLazyLoad&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$ocLazyLoad</span>) </span>{
+             <span class="hljs-keyword">return</span> $ocLazyLoad.load(<span class="hljs-string">&apos;js/ServiceTest.js&apos;</span>);
+    }]
+  }
+})
+.state(<span class="hljs-string">&apos;parent.child&apos;</span>, {
+    resolve: {
+        test: [<span class="hljs-string">&apos;loadMyService&apos;</span>, <span class="hljs-string">&apos;$ServiceTest&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">loadMyService, $ServiceTest</span>) </span>{
+            <span class="hljs-comment">// you can use your service</span>
+            $ServiceTest.doSomething();
+        }]
+    }
+});
+</code></pre>
+<h4 id="%E5%BD%93%E7%84%B6%E7%9B%B8%E9%82%BB%E7%9A%84-resolves-%E4%B9%9F%E6%98%AF%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84-%E4%B8%8D%E8%BF%87%E6%B3%A8%E6%84%8F%E9%A1%BA%E5%BA%8F">&#x5F53;&#x7136;&#x76F8;&#x90BB;&#x7684;<code>resolves</code>&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;,&#x4E0D;&#x8FC7;&#x6CE8;&#x610F;&#x987A;&#x5E8F;.</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript">$stateProvider.state(<span class="hljs-string">&apos;index&apos;</span>, {
+  url: <span class="hljs-string">&quot;/&quot;</span>,
+  resolve: {
+    loadMyService: [<span class="hljs-string">&apos;$ocLazyLoad&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$ocLazyLoad</span>) </span>{
+             <span class="hljs-keyword">return</span> $ocLazyLoad.load(<span class="hljs-string">&apos;js/ServiceTest.js&apos;</span>);
+    }],
+        test: [<span class="hljs-string">&apos;loadMyService&apos;</span>, <span class="hljs-string">&apos;$serviceTest&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">loadMyService, $serviceTest</span>) </span>{
+            <span class="hljs-comment">// you can use your service</span>
+            $serviceTest.doSomething();
+        }]
+    }
+});
+</code></pre>
+<h4 id="%E5%BD%93%E7%84%B6-%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%83%B3%E7%AB%8B%E5%8D%B3%E4%BD%BF%E7%94%A8%E8%BF%99%E4%BA%9B%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8E%BB%E5%AE%9A%E4%B9%89%E4%B8%A4%E4%B8%AA-resolves-%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-injector-%E6%B3%A8%E5%85%A5%E5%99%A8-%E5%8E%BB%E8%8E%B7%E5%8F%96%E8%BF%99%E4%BA%9B%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E8%BF%99%E4%BA%9B%E6%9C%8D%E5%8A%A1-%E8%BF%99%E7%A7%8D%E6%96%B9%E6%B3%95%E5%8F%AF%E4%BB%A5%E5%9C%A8%E4%BB%BB%E4%BD%95%E4%B8%80%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%E5%B7%A5%E4%BD%9C-%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E5%9C%A8%E8%B7%AF%E7%94%B1%E4%B8%AD">&#x5F53;&#x7136;,&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7ACB;&#x5373;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x52A0;&#x8F7D;&#x7684;&#x6587;&#x4EF6;,&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x53BB;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;<code>resolves</code>,&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>injector</code>(&#x6CE8;&#x5165;&#x5668;)&#x53BB;&#x83B7;&#x53D6;&#x8FD9;&#x4E9B;&#x52A0;&#x8F7D;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;(<em>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x4F55;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x5DE5;&#x4F5C;,&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x5728;&#x8DEF;&#x7531;&#x4E2D;</em>)</h4>
+<h4 id="-javascript"><em>JavaScript</em></h4>
+<pre><code class="lang-javascript">$stateProvider.state(<span class="hljs-string">&apos;index&apos;</span>, {
+  url: <span class="hljs-string">&quot;/&quot;</span>,
+  resolve: {
+    loadMyService: [<span class="hljs-string">&apos;$ocLazyLoad&apos;</span>, <span class="hljs-string">&apos;$injector&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$ocLazyLoad, $injector</span>) </span>{
+      <span class="hljs-keyword">return</span> $ocLazyLoad.load(<span class="hljs-string">&apos;js/ServiceTest.js&apos;</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> $serviceTest = $injector.get(<span class="hljs-string">&quot;$serviceTest&quot;</span>);
+        $serviceTest.doSomething();
+      });
+    }]
+  }
+});
+</code></pre>
 
                     
                     </section>
